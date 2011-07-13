@@ -2,7 +2,7 @@
 
 namespace sakiv\framework\core;
 
-class Activator extends PropertyObject {
+class Activator extends PropertyBase {
 
 	private static $context;
 
