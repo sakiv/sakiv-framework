@@ -1,12 +1,12 @@
 <?php
 
 /**
- * PropertyObject class provides functionality to add property accessors
+ * PropertyBase class provides functionality to add property accessors
  * to any class object.
  * @author sakiv
  *
  */
-abstract class PropertyObject
+abstract class PropertyBase
 {
   /**
    * Gets the value for a given property.
