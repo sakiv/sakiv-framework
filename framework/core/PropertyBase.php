@@ -1,5 +1,6 @@
 <?php
 
+namespace sakiv\framework\core;
 /**
  * PropertyBase class provides functionality to add property accessors
  * to any class object.

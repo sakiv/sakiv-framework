@@ -12,33 +12,11 @@
 
 */
 
-$sf_config = array();
-
 /**
- * Config Name: 	app_path
- * Description: 	Specifies the application root path.
- * 					If omitted or blank value then uses default value.
- * 					Using this config entry default folder path can be overriden.
- * Default Value:	Inquire the path during application run time or 
- * 					takes current executing application directory. 
- */
-$sf_config['app_path'] = '';
-
-/**
- * Config Name: 	framework_path
+ * Config Name: 	SF_PATH
  * Description: 	Specifies the framework folder path.
  * 					If omitted or blank value then uses default value.
  * 					Using this config entry default folder path can be overriden.
- * Default Value:	'./'. 
+ * Default Value:	'./framework'.
  */
-$sf_config['framework_path'] = '../../Framework/';
-
-
-/**
- * Config Name: 	framework_folder_name
- * Description: 	Specifies the framework folder name. 
- * 					If omitted or blank value then uses default value.
- * 					Using this config entry default folder name can be overriden.
- * Default Value:	'system'. 
- */
-$sf_config['framework_folder_name'] = 'system';
+// define('SF_PATH', './framework');

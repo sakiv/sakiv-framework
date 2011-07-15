@@ -9,5 +9,5 @@ namespace sakiv\framework\core;
  */
 interface iContext {
 	function getCurrent();
-	function getCurrent($type);
+// 	function getCurrent($type);
 }
