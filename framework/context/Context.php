@@ -30,6 +30,8 @@ class Context implements iContext {
 	{
 		trigger_error('Clone is not allowed for Context class.', E_USER_ERROR);
 	}
+
+	// TODO: Expand further methods to Context class.
 }
 
 ?>
