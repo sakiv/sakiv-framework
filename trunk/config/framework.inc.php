@@ -12,6 +12,8 @@
 
 */
 
+// TODO: Add required framework configuration.
+
 /**
  * Config Name: 	SF_PATH
  * Description: 	Specifies the framework folder path.
