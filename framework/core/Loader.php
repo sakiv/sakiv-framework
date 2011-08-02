@@ -8,7 +8,7 @@ define('SF_ROOT_NAMESPACE', 'sakiv/framework');
 
 require_once __DIR__.'/../io/file.php';
 
-class Loader {
+final class Loader {
 
 	public static function autoLoad($className) {
 
