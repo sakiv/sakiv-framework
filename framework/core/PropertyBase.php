@@ -14,8 +14,9 @@ abstract class PropertyBase
    * Return type is type of property.
    * @param unknown_type $name
    */
-  public function __get($name)
+  private function __get($name)
   {
+  	print("Property get for [$name]<br/>");
     if (method_exists($this, ($method = 'get_'.$name)))
     {
       return $this->$method();
@@ -28,7 +29,7 @@ abstract class PropertyBase
    * Return type is boolean.
    * @param unknown_type $name
    */
-  public function __isset($name)
+  private function __isset($name)
   {
     if (method_exists($this, ($method = 'isset_'.$name)))
     {
@@ -43,8 +44,9 @@ abstract class PropertyBase
    * @param unknown_type $name
    * @param unknown_type $value
    */
-  public function __set($name, $value)
+  private function __set($name, $value)
   {
+  	print("Property set for [$name]<br/>");
     if (method_exists($this, ($method = 'set_'.$name)))
     {
       $this->$method($value);
@@ -56,7 +58,7 @@ abstract class PropertyBase
    * No values returned.
    * @param unknown_type $name
    */
-  public function __unset($name)
+  private function __unset($name)
   {
     if (method_exists($this, ($method = 'unset_'.$name)))
     {

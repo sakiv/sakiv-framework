@@ -2,13 +2,15 @@
 
 namespace sakiv\framework\context;
 
-use sakiv\framework\core;
+// Namespaces referred
+use sakiv\framework\core\iContext;
+use sakiv\framework\core\Internal;
 
 // Singleton Context class
 class Context implements iContext {
 
 	// Holds an instance of the class
-	private static $context;
+	private static $instance;
 
 	// Private constructor
 	private function __construct() {
@@ -16,13 +18,14 @@ class Context implements iContext {
 	}
 
 	// The singleton method
-	public function getCurrent() {
-		if(!isset(self::$context)) {
+	public static function getCurrent() {
+		print("Context->getCurrent() invoked.<br/>");
+		if(!isset(self::$instance)) {
 			$c = __CLASS__;
-			$context = new $c;
+			self::$instance = new $c;
 		}
 
-		return self::$context;
+		return self::$instance;
 	}
 
 	// Prevent users to clone the instance
@@ -32,6 +35,37 @@ class Context implements iContext {
 	}
 
 	// TODO: Expand further methods to Context class.
+
+
+	/**
+	* Sets the value for a given property.
+	* No values returned.
+	* @param unknown_type $name
+	* @param unknown_type $value
+	*/
+	public function __set($name, $value)
+	{
+		if (Internal::isInternal()) {
+			if (method_exists($this, ($method = 'set_'.$name))) {
+				$this->$method($value);
+			}
+		}
+	}
+
+	/**
+	 * Unsets a value of the given property.
+	 * No values returned.
+	 * @param unknown_type $name
+	 */
+	public function __unset($name)
+	{
+		if (Internal::isInternal()) {
+			if (method_exists($this, ($method = 'unset_'.$name))) {
+				$this->$method();
+			}
+		}
+	}
+
 }
 
 ?>
