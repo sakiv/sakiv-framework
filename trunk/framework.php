@@ -2,8 +2,15 @@
 
 namespace sakiv\framework;
 
+// Namespaces referred
+use sakiv\framework\instrumentation\Trace;
+use sakiv\framework\instrumentation\TraceMessageTypes;
+
+
 // Should be included on top of each framewrok file.
-if(!defined('sakiv.framework')){die('External Access to File Denied');}
+if(!defined('sakiv.framework')){
+	Trace::write("External Access to File Denied", TraceMessageTypes::error, TRUE);
+}
 
 /**
  * Sakiv.Framework: constant for framework config file name.
@@ -67,7 +74,7 @@ class sf {
 
 				// Print warning for any other data type
 				default:
-					print_r("warning: Lookup path ['$lookupPath'] not supported.");
+					Trace::write("Lookup path ['$lookupPath'] not supported.", TraceMessageTypes::warning);
 					break;
 
 			}
