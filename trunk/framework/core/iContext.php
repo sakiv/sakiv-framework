@@ -9,6 +9,6 @@ namespace sakiv\framework\core;
  */
 interface iContext {
 	// TODO: Need to finalize on list of methods.
-	function getCurrent();
+	public static function getCurrent();
 // 	function getCurrent($type);
 }

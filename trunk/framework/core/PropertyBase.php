@@ -16,7 +16,7 @@ abstract class PropertyBase
    */
   private function __get($name)
   {
-  	print("Property get for [$name]<br/>");
+//   	print("Property get for [$name]<br/>");
     if (method_exists($this, ($method = 'get_'.$name)))
     {
       return $this->$method();
@@ -46,7 +46,7 @@ abstract class PropertyBase
    */
   private function __set($name, $value)
   {
-  	print("Property set for [$name]<br/>");
+//   	print("Property set for [$name]<br/>");
     if (method_exists($this, ($method = 'set_'.$name)))
     {
       $this->$method($value);

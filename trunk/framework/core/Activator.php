@@ -39,24 +39,8 @@ final class Activator extends PropertyBase {
 	 * @return string
 	 */
 	public function get_context($type = 'sakiv\framework\context\Context') {
-		// TODO: Plan on using different type of contexts.
-
-		print("$type<br/>");
-		// TODO: Start Here - August 9, 2011
+		//print("Type: $type<br/>");
 		return $type::getCurrent();
 	}
-
-	/*
-	private static function set_context($value) {
-
-		// TODO: Implement set_context method. Need to make it internal.
-		if(!Internal::isInternal()) {
-			Trace::write("Context can only be set from within framework classes.", TraceMessageTypes::error, TRUE);
-		}
-
-		self::$contexts[gettype($value)] = $value;
-
-	}
-	*/
 
 }
