@@ -14,7 +14,7 @@ final class Trace {
 
 	public static function write($message, $messageType = TraceMessageTypes::info, $haltExecution = FALSE) {
 		$msg = "$messageType: $message";
-		print_r($msg);
+// 		print_r($msg);
 
 		// Halt execution if true
 		if($haltExecution) {

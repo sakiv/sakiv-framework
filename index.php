@@ -15,6 +15,10 @@ sf::loadFramework();
 print('Get context<br/>');
 $context = Activator::getInstance()->context;
 
+$context->user = 'sakiv';
+
+// Activator::getInstance()->setValue();
+
 print('Print context<br/>');
 print(gettype($context)."<br/>");
 

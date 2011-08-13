@@ -134,7 +134,7 @@ class sf {
 		if($handle = opendir($sf_core)) {
 
 			$loaderPath = self::joinPath($sf_core, 'Loader.php');
-			print("Loading [$loaderPath]...<br/>");
+// 			print("Loading [$loaderPath]...<br/>");
 			require_once $loaderPath;
 			spl_autoload_register(__NAMESPACE__.'\core\Loader::autoLoad');
 
@@ -142,7 +142,7 @@ class sf {
 				if(strtolower(end(explode('.', $file))) == 'php') {
 					$filePath = self::joinPath($sf_core, $file);
 					if (is_file($filePath)) {
-						print("Loading [$filePath]...<br/>");
+// 						print("Loading [$filePath]...<br/>");
 						require_once $filePath;
 					}
 				}

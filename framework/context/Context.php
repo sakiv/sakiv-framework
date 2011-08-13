@@ -7,19 +7,20 @@ use sakiv\framework\core\iContext;
 use sakiv\framework\core\Internal;
 
 // Singleton Context class
-class Context implements iContext {
+class Context implements iContext  {
 
 	// Holds an instance of the class
 	private static $instance;
 
+	private $content = array();
+
 	// Private constructor
 	private function __construct() {
-
 	}
 
 	// The singleton method
 	public static function getCurrent() {
-		print("Context->getCurrent() invoked.<br/>");
+// 		print("Context->getCurrent() invoked.<br/>");
 		if(!isset(self::$instance)) {
 			$c = __CLASS__;
 			self::$instance = new $c;
@@ -34,8 +35,24 @@ class Context implements iContext {
 		trigger_error('Clone is not allowed for Context class.', E_USER_ERROR);
 	}
 
-	// TODO: Expand further methods to Context class.
+	/**
+	 * Gets the value for a given property.
+	 * @param unknown_type $name
+	 * @return value of the given property name.
+	 */
+	public function __get($name) {
+		if (array_key_exists($name, $this->content)) {
+			return $this->content[$name];
+		}
 
+		$trace = debug_backtrace();
+		trigger_error(
+		'Undefined property via __get(): ' . $name .
+	            ' in ' . $trace[0]['file'] .
+		' on line ' . $trace[0]['line'],
+		E_USER_NOTICE);
+		return null;
+	}
 
 	/**
 	* Sets the value for a given property.
@@ -49,6 +66,24 @@ class Context implements iContext {
 			if (method_exists($this, ($method = 'set_'.$name))) {
 				$this->$method($value);
 			}
+			else
+			{
+				$this->content[$name] = $value;
+			}
+		}
+	}
+
+	/**
+	 * Enter description here ...
+	 * @param unknown_type $name
+	 */
+	public function __isset($name) {
+		if (method_exists($this, ($method = 'unset_'.$name))) {
+			$this->$method();
+		}
+		else
+		{
+			return isset($this->data[$name]);
 		}
 	}
 
@@ -63,6 +98,10 @@ class Context implements iContext {
 			if (method_exists($this, ($method = 'unset_'.$name))) {
 				$this->$method();
 			}
+		}
+		else
+		{
+			unset($this->content[$name]);
 		}
 	}
 

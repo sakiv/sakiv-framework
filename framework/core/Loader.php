@@ -5,7 +5,7 @@ namespace sakiv\framework\core;
 // Namespaces referred
 use sakiv\framework\io;
 
-define('SF_ROOT_NAMESPACE', 'sakiv/framework');
+define('SF_ROOT_NAMESPACE', 'sakiv\framework');
 
 require_once __DIR__.'/../io/file.php';
 
@@ -13,7 +13,7 @@ final class Loader {
 
 	public static function autoLoad($className) {
 
-		print("AutoLoader invoked for [$className]<br/>");
+// 		print("AutoLoader invoked for [$className]<br/>");
 
 // 		$trace = debug_backtrace();
 // 		foreach ($trace as $item) {
@@ -24,14 +24,14 @@ final class Loader {
 // 		}
 
 
-		$file = str_replace('\\', '/', $className);
-		$file = str_replace(SF_ROOT_NAMESPACE, '', $file);
+		$file = str_replace(SF_ROOT_NAMESPACE, '', $className);
+		$file = str_replace('\\', '/', $file);
 
 		$filePath = realpath(io\joinPaths(__DIR__, '..', $file.'.php'));
 
-		print("Search file at [$filePath]<br/>");
+// 		print("Search file at [$filePath]<br/>");
 		if(file_exists($filePath) && is_file($filePath)) {
-			print("File found...<br/>");
+// 			print("File found...<br/>");
 			require_once $filePath;
 			return true;
 		}
