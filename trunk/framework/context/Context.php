@@ -2,11 +2,30 @@
 
 namespace sakiv\framework\context;
 
+// Should be included on top of each framewrok file.
+if(!defined('sakiv.framework')){
+	Trace::write("External Access to File Denied", TraceMessageTypes::error, TRUE);
+}
+
 // Namespaces referred
 use sakiv\framework\core\iContext;
 use sakiv\framework\core\Internal;
 
-// Singleton Context class
+/**
+ * This is main and default context class for sakiv.framework.
+ * This is a singleton class. It implements iContext.
+ *
+ * @category sakiv\framework\context
+ * @filesource /framework/context/Context.php
+ * @see iContext
+ * @uses
+ * sakiv\framework\core\iContext
+ * sakiv\framework\core\Internal
+ *
+ * @author sakiv
+ * @copyright Copyright (C) 2005-2009, Sakiv Inc., India
+ * @license Licensed under the GNU GPL v3
+*/
 class Context implements iContext  {
 
 	// Holds an instance of the class

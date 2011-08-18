@@ -2,6 +2,21 @@
 
 namespace sakiv\framework\io;
 
+// Should be included on top of each framewrok file.
+if(!defined('sakiv.framework')){
+	Trace::write("External Access to File Denied", TraceMessageTypes::error, TRUE);
+}
+
+/**
+ * Contains file operations.
+ *
+ * @category sakiv\framework\io
+ * @filesource /framework/io/file.php
+ *
+ * @author sakiv
+ * @copyright Copyright (C) 2005-2009, Sakiv Inc., India
+ * @license Licensed under the GNU GPL v3
+*/
 function joinPaths() {
     $args = func_get_args();
     $paths = array();
