@@ -2,31 +2,45 @@
 
 namespace sakiv\framework;
 
-// Namespaces referred
-use sakiv\framework\instrumentation\Trace;
-use sakiv\framework\instrumentation\TraceMessageTypes;
-
-
 // Should be included on top of each framewrok file.
 if(!defined('sakiv.framework')){
 	Trace::write("External Access to File Denied", TraceMessageTypes::error, TRUE);
 }
 
+// Namespaces referred
+use sakiv\framework\instrumentation\Trace;
+use sakiv\framework\instrumentation\TraceMessageTypes;
+
 /**
- * Sakiv.Framework: constant for framework config file name.
+ * sakiv.framework: constant for framework config file name.
  * @var unknown_type
  */
 define('SF_CONFIG_FILE_NAME', 'framework.inc.php');
 
 /**
- * Sakiv.Framework entry point class.
- * @author sakiv
+ * sakiv.framework entry point.
  *
- */
+ * @example
+ * <?php
+ * use sakiv\framework\sf;
+ *
+ * define('sakiv.framework', 1);
+ * require_once 'framework.php';
+ * sf::loadFramework();
+ * ?>
+ *
+ * @uses
+ * sakiv\framework\instrumentation\Trace
+ * sakiv\framework\instrumentation\TraceMessageTypes
+ *
+ * @author sakiv
+ * @copyright Copyright (C) 2005-2009, Sakiv Inc., India
+ * @license Licensed under the GNU GPL v3
+*/
 class sf {
 
 	/**
-	 * Sakiv.Framework: Use this method to load Sakiv Framework.
+	 * sakiv.framework: Use this method to load Sakiv Framework.
 	 * @param unknown_type $configPath
 	 */
 	public static function loadFramework($configPath = null) {
@@ -43,7 +57,8 @@ class sf {
 
 		// TODO: Try to use ErrorHandler or some common thing here.
 
-		return self::load($configPath);
+		// Load the framework
+		self::load($configPath);
 	}
 
 	/**
@@ -53,7 +68,7 @@ class sf {
 	private static function locateConfigFile($lookupPath = null) {
 
 		/**
-		* Sakiv.Framework: List of path to locate the framework config file.
+		* sakiv.framework: List of path to locate the framework config file.
 		* @var unknown_type
 		*/
 		$defaultLookupPath = array('./', './config');
@@ -130,13 +145,18 @@ class sf {
 		// Load core library
 		////////////////////////////////////////////////////////////
 
+		// Resolve core library path by taking framework path constant
+		// and core string
 		$sf_core = self::joinPath(SF_PATH, 'core');
+
+		// If framework core directory exits and handle is returned
+		// then first load framework Auto Loader class
 		if($handle = opendir($sf_core)) {
 
 			$loaderPath = self::joinPath($sf_core, 'Loader.php');
 // 			print("Loading [$loaderPath]...<br/>");
 			require_once $loaderPath;
-			spl_autoload_register(__NAMESPACE__.'\core\Loader::autoLoad');
+// 			spl_autoload_register(__NAMESPACE__.'\core\Loader::autoLoad');
 
 			while (false !== ($file = readdir($handle))) {
 				if(strtolower(end(explode('.', $file))) == 'php') {

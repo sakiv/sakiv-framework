@@ -1,16 +1,18 @@
 <?php
 
-/*
-+-----------------------------------------------------------------------+
-| Application configuration file                                        |
-|                                                                       |
-| This is framework configuration file of the application 				|
-| Copyright (C) 2005-2009, Sakiv Inc., India			                |
-| Licensed under the GNU GPL v3                                         |
-|                                                                       |
-+-----------------------------------------------------------------------+
+/**
+ * @name framework.inc.php
+ * This is framework configuration file of the application
 
-*/
+ * @author sakiv
+ * @copyright Copyright (C) 2005-2009, Sakiv Inc., India
+ * @license Licensed under the GNU GPL v3
+ */
+
+// Should be included on top of each framewrok file.
+if(!defined('sakiv.framework')){
+	Trace::write("External Access to File Denied", TraceMessageTypes::error, TRUE);
+}
 
 // TODO: Add required framework configuration.
 

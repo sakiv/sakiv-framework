@@ -1,12 +1,23 @@
 <?php
 
 namespace sakiv\framework\core;
+
+// Should be included on top of each framewrok file.
+if(!defined('sakiv.framework')){
+	Trace::write("External Access to File Denied", TraceMessageTypes::error, TRUE);
+}
+
 /**
- * PropertyBase class provides functionality to add property accessors
- * to any class object.
- * @author sakiv
+ * PropertyBase class provides functionality to add property accessors to any class object.
  *
- */
+ * @abstract This class is abstract.
+ * @category sakiv\framework\core
+ * @filesource /framework/core/PropertyBase.php
+ *
+ * @author sakiv
+ * @copyright Copyright (C) 2005-2009, Sakiv Inc., India
+ * @license Licensed under the GNU GPL v3
+*/
 abstract class PropertyBase
 {
   /**
