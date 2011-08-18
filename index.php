@@ -18,8 +18,6 @@ $context = Activator::getInstance()->context;
 
 $context->user = 'sakiv';
 
-
-
 // Activator::getInstance()->setValue();
 
 print('Print context<br/>');
