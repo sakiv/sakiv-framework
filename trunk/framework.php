@@ -156,7 +156,6 @@ class sf {
 			$loaderPath = self::joinPath($sf_core, 'Loader.php');
 // 			print("Loading [$loaderPath]...<br/>");
 			require_once $loaderPath;
-// 			spl_autoload_register(__NAMESPACE__.'\core\Loader::autoLoad');
 
 			while (false !== ($file = readdir($handle))) {
 				if(strtolower(end(explode('.', $file))) == 'php') {

@@ -2,16 +2,16 @@
 
 namespace sakiv\framework\core;
 
+// Namespaces referred
+use sakiv\framework\io\File;
+
 // Should be included on top of each framewrok file.
 if(!defined('sakiv.framework')){
 	Trace::write("External Access to File Denied", TraceMessageTypes::error, TRUE);
 }
 
-// Namespaces referred
-use sakiv\framework\io;
-
 define('SF_ROOT_NAMESPACE', 'sakiv\framework');
-spl_autoload_register(__NAMESPACE__.'\core\Loader::autoLoad');
+spl_autoload_register(__NAMESPACE__.'\Loader::autoLoad');
 require_once __DIR__.'/../io/file.php';
 
 /**
@@ -45,7 +45,7 @@ final class Loader {
 		$file = str_replace(SF_ROOT_NAMESPACE, '', $className);
 		$file = str_replace('\\', '/', $file);
 
-		$filePath = realpath(io\joinPaths(__DIR__, '..', $file.'.php'));
+		$filePath = realpath(File::joinPaths(__DIR__, '..', $file.'.php'));
 
 // 		print("Search file at [$filePath]<br/>");
 		if(file_exists($filePath) && is_file($filePath)) {
