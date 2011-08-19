@@ -15,7 +15,7 @@ if(!defined('sakiv.framework')){
  *
  * @final This class cannot be extended.
  * @category sakiv\framework\core
- * @filesource /framework/core/Activator.php
+ * @filesource /framework/core/Accessor.php
  * @see PropertyBase
  * @uses
  * sakiv\framework\core\PropertyBase
@@ -24,7 +24,7 @@ if(!defined('sakiv.framework')){
  * @copyright Copyright (C) 2005-2009, Sakiv Inc., India
  * @license Licensed under the GNU GPL v3
 */
-final class Activator extends PropertyBase {
+final class Accessor extends PropertyBase {
 
 	//private static $contexts = array();
 
@@ -49,7 +49,7 @@ final class Activator extends PropertyBase {
 	// Prevent users to clone the instance
 	public function __clone()
 	{
-		trigger_error('Clone is not allowed for Activator class.', E_USER_ERROR);
+		trigger_error('Clone is not allowed for Accessor class.', E_USER_ERROR);
 	}
 
 
