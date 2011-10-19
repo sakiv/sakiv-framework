@@ -14,11 +14,10 @@ require_once 'framework.php';
 sf::loadFramework();
 
 print('Get context<br/>');
-$context = Accessor::getInstance()->context;
+
+$context = Accessor::getContext();
 
 $context->user = 'sakiv';
-
-// Accessor::getInstance()->setValue();
 
 print('Print context<br/>');
 print(gettype($context)."<br/>");
