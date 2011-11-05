@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /sakiv.framework
+RewriteRule ^sf$ sf/
+RewriteRule ^sf(/.*)$ sf.php?$1
+
+#SSLOptions +StrictRequire
+#SSLRequireSSL
+
+#<FilesMatch "^index$">
+#    	ForceType application/x-httpd-php
+#	SetHandler application/x-httpd-php
+#</FilesMatch>

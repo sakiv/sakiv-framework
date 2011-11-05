@@ -172,7 +172,7 @@ class sf {
 		////////////////////////////////////////////////////////////
 
 		// Release the output
-		ob_end_flush();
+		ob_flush();
 
 	}
 
