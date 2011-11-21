@@ -2,6 +2,10 @@ RewriteEngine On
 RewriteBase /sakiv.framework
 RewriteRule ^sf$ sf/
 RewriteRule ^sf(/.*)$ sf.php?$1
+RewriteRule ^t$ t/
+RewriteRule ^t(/.*)$ tester.php?$1
+
+#RewriteRule ^sf(/?.*)$ sf.php?$1
 
 #SSLOptions +StrictRequire
 #SSLRequireSSL
