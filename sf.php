@@ -16,8 +16,9 @@ require_once 'framework.php';
 sf::loadFramework();
 // ==============================================
 
-// $qs = $_SERVER['QUERY_STRING'];
-// echo "Query String: $qs";
+$qs = $_SERVER['QUERY_STRING'];
+echo "Query String: $qs";
+echo "<br>";
 // die;
 
 // error handler function
