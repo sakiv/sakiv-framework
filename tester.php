@@ -1,5 +1,9 @@
 <?php
 
+//include_once './test/regex.php';
+//die;
+
+
 $qs = $_SERVER['QUERY_STRING'];
 
 echo "Loading Tester...<br>";
@@ -28,21 +32,34 @@ echo "Loading Tester...<br>";
 
 $t = getRequestedTester($qs);
 
-if (isset($t)) {
-	echo "./test/$t.php";
-	require_once "./test/$t.php";
+if (isset($t)) {    
+    $file = __DIR__ . "/test/$t.php";
+        
+//    $a = str_split($file);
+//    $i = 0;
+//    foreach ($a as $v) {
+//        $i += 1;
+//        echo "[$i] => $v<br>";
+//    }
+        
+    echo "$file<br>";
+    if (file_exists($file)) {
+        include_once $file;
+    }
 }
 
 
 function getRequestedTester($queryString) {
 	echo "==================================<br>";
-	echo "Input: $queryString<br>";
-	$s = $queryString;
-	$s = preg_replace("#^([/]?)#", "\1", $s);
-	$s = $s . "/";
-	echo "Replace result: ";
-	print_r($s);
-	echo "<br>";
+	echo "Input: $queryString : ";
+        echo strlen($queryString) . "<br>";
+        
+	$s = $queryString;        
+	$s = preg_replace("#^([/]?)#", " ", $s);
+	echo "Replace result: $s : " . strlen($s) . "<br>";
+	$s = trim($s) . "/";
+	echo "Concat result: $s : " . strlen($s) . "<br>";
+        
 	$r = preg_match_all("#^([^/].*?)/#", $s, $m);
 
 	// $r = preg_match_all("#^([/]?)#", $s, $m);
