@@ -9,9 +9,10 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        <h1>Welcome to Sakiv Framework landing page.</h1>
         <?php
         // put your code here
-        header('location: ./t/regex/param');
+//        header('location: ./t/regex/param');
         //include_once './test/regex.php';
         ?>
     </body>
