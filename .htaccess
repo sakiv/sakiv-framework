@@ -1,10 +1,15 @@
 RewriteEngine On
 RewriteBase /sakiv.framework
+
 RewriteRule ^sf$ sf/
 RewriteRule ^sf(/.*)$ sf.php?$1
-RewriteRule ^t$ t/
-RewriteRule ^t(/.*)$ tester.php?$1
 
+# Page resolver mappings
+RewriteRule ^@(.*?)/(.*)/$ app/$1/?$2
+RewriteRule ^@(.*?)/(.*?)/(.*)$ app/$1/?a=$2&p=$3
+RewriteRule ^@(.*?)/(.*)$ app/$1/?$2
+
+#RewriteRule ^@(.*)/(.*)$ app/_resolve.php?a=$1&p=$2
 #RewriteRule ^sf(/?.*)$ sf.php?$1
 
 #SSLOptions +StrictRequire

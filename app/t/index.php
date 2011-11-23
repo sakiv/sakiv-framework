@@ -7,6 +7,9 @@
 $qs = $_SERVER['QUERY_STRING'];
 
 echo "Loading Tester...<br>";
+echo "Querystring: $qs<br>";
+echo "{$_GET[a]}<br>";
+echo "{$_GET[p]}<br>";
 
 // $s = array(
 // 	"regex",
@@ -30,10 +33,23 @@ echo "Loading Tester...<br>";
 // 	$t = getRequestedTester($v);
 // }
 
+//preg_match_all("#^/\#(.*?)/(.*)#", "/#t/search/vaggarwa", $matches);
+//print_r($matches);
+//die;
+
+
 $t = getRequestedTester($qs);
 
-if (isset($t)) {    
-    $file = __DIR__ . "/test/$t.php";
+if (isset($t)) {
+    
+    if($_GET[a]) {
+        $file = __DIR__ . "/{$_GET[a]}.php";        
+    } else {
+        $file = __DIR__ . "/{$_SERVER[QUERY_STRING]}.php";
+    }
+    
+//    $file = __DIR__ . "/{$_GET[a]}.php?{$_GET[p]}";
+        
         
 //    $a = str_split($file);
 //    $i = 0;
