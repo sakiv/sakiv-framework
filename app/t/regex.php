@@ -15,4 +15,9 @@ function getParams() {
     }
 }
 
+function processRegex($r, $s) {
+    preg_match_all($r, $s, $m);
+    return $m;   
+}
+
 ?>

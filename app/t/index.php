@@ -48,8 +48,7 @@ if (isset($t)) {
         $file = __DIR__ . "/{$_SERVER[QUERY_STRING]}.php";
     }
     
-//    $file = __DIR__ . "/{$_GET[a]}.php?{$_GET[p]}";
-        
+//    $file = __DIR__ . "/{$_GET[a]}.php?{$_GET[p]}";        
         
 //    $a = str_split($file);
 //    $i = 0;
