@@ -1,19 +1,29 @@
 RewriteEngine On
 RewriteBase /sakiv.framework
 
+# Page resolver mappings
 RewriteRule ^sf$ sf/
 RewriteRule ^sf(/.*)$ sf.php?$1
 
+#
 # Page resolver mappings
+# Rule should stay in this sequence to working for all use cases
+#
+# Resolves [http://domain.name/@1/2/3/4] to [http://domain.name/app/1/2/3/4
+RewriteRule ^@(.*?)/(.*?)/(.+)$ app/$1/?a=$2&p=$3
+#
+# Resolves [http://domain.name/@1/2/] to [http://domain.name/app/1/2
 RewriteRule ^@(.*?)/(.*)/$ app/$1/?$2
-RewriteRule ^@(.*?)/(.*?)/(.*)$ app/$1/?a=$2&p=$3
+#
+# Resolves [http://domain.name/@1/2] to [http://domain.name/app/1/2
 RewriteRule ^@(.*?)/(.*)$ app/$1/?$2
+
 
 #RewriteRule ^@(.*)/(.*)$ app/_resolve.php?a=$1&p=$2
 #RewriteRule ^sf(/?.*)$ sf.php?$1
 
-#SSLOptions +StrictRequire
-#SSLRequireSSL
+SSLOptions +StrictRequire
+SSLRequireSSL
 
 #<FilesMatch "^index$">
 #    	ForceType application/x-httpd-php
