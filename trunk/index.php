@@ -10,9 +10,10 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Welcome to Sakiv Framework landing page.</h1>
-        <?php
+        <?php        
+        $qs = $_SERVER['QUERY_STRING'];
         // put your code here
-//        header('location: ./t/regex/param');
+        $header = header("location: $qs");
         //include_once './test/regex.php';
         ?>
     </body>
