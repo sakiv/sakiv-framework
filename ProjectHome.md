@@ -1,0 +1,1 @@
+It is a PHP based application framework. It provides basic and required application blocks for a simple/complex, scalable PHP applications.
